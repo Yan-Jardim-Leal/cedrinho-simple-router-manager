@@ -36,7 +36,7 @@ pip install simple_port_manager
 Or install from source:
 
 ```bash
-git clone <later-put-in-here>
+git clone https://github.com/Yan-Jardim-Leal/cedrinho-simple-router-manager
 cd port_manager
 pip install .
 ```
@@ -154,5 +154,5 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.TXT) file for details.
 
