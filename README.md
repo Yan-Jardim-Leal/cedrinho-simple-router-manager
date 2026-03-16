@@ -1,0 +1,158 @@
+# CEDRINHO - Simple Port Manager
+
+Version: 1.0
+
+A simple Python library for managing TCP ports and handling client-server communications. This project provides an abstraction for simplified port handling and communication, developed as part of a project at Instituto Politécnico de Bragança.
+
+**Creator:**  
+Yan Jardim Leal
+
+## Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Reference](#api-reference)
+- [Examples](#examples)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Features
+
+- Simple TCP server setup and client connection handling
+- Asynchronous client management using threads
+- Easy-to-use API for listening on ports and sending data
+- Support for custom callback functions for handling received data
+- Built-in connection management and cleanup
+
+## Installation
+
+Install the package using pip:
+
+```bash
+pip install simple_port_manager
+```
+
+Or install from source:
+
+```bash
+git clone <later-put-in-here>
+cd port_manager
+pip install .
+```
+
+## Usage
+
+### Basic Server Setup
+
+```python
+from port_manager import PortManager
+
+def handle_data(data, address):
+    print(f"Received from {address}: {data}")
+    # Process the data here
+
+# Create a PortManager instance
+manager = PortManager('localhost', 12345)
+
+# Start listening on the port with a callback function
+manager.listenPort(handle_data)
+```
+
+### Client Connection
+
+```python
+from port_manager import PortManager
+
+# Create a client instance
+client = PortManager('localhost', 12345)
+
+# Send data to the server
+response = client.callPort("Hello, Server!")
+print(response.decode('utf-8'))
+```
+
+### Closing Connections
+
+```python
+# To stop the server and close all connections
+success = manager.closeConnections()
+if success:
+    print("All connections closed successfully")
+```
+
+## API Reference
+
+### PortManager Class
+
+#### `__init__(ip: str, port: int)`
+
+Initializes a new PortManager instance.
+
+- `ip`: The IP address to bind to (e.g., 'localhost' or '0.0.0.0')
+- `port`: The port number to use
+
+#### `listenPort(function: Callable) -> None`
+
+Starts listening on the specified port and handles incoming connections asynchronously.
+
+- `function`: A callback function that takes two arguments: `data` (str) and `address` (tuple). This function is called whenever data is received from a client.
+
+#### `closeConnections() -> bool`
+
+Stops the server and closes all active connections.
+
+- Returns `True` if successful, `False` otherwise.
+
+#### `callPort(data: any) -> any`
+
+Connects to the server as a client and sends data, then receives a response.
+
+- `data`: The data to send (will be encoded to UTF-8)
+- Returns the response data received from the server
+
+## Examples
+
+### Echo Server
+
+```python
+from port_manager import PortManager
+
+def echo_handler(data, address):
+    # Echo back the received data
+    response = f"Echo: {data}"
+    print(response)
+
+manager = PortManager('0.0.0.0', 8080)
+manager.listenPort(echo_handler)
+```
+
+### Simple Chat Client
+
+```python
+from port_manager import PortManager
+
+client = PortManager('localhost', 8080)
+
+while True:
+    message = input("Enter message: ")
+    if message.lower() == 'quit':
+        break
+    response = client.callPort(message)
+    print(f"Server response: {response.decode('utf-8')}")
+```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
