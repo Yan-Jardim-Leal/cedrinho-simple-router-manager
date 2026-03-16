@@ -154,5 +154,5 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE.TXT) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/Yan-Jardim-Leal/cedrinho-simple-router-manager/blob/main/LICENSE.txt) file for details.
 
