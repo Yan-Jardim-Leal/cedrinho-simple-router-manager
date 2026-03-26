@@ -30,7 +30,7 @@ Yan Jardim Leal
 Install the package using pip:
 
 ```bash
-pip install simple_port_manager
+pip install port-manager==0.1.0
 ```
 
 Or install from source:
