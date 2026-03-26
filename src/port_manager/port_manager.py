@@ -50,7 +50,7 @@ class PortManager:
         d_socket.bind((self.__ip, self.__port))
         d_socket.listen(1)
         self.__running = True
-
+        
         thread = Threading.Thread(target=self.__start_loop, args=(function), daemon=True)
         thread.start()
         
