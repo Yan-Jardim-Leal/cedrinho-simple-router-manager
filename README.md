@@ -1,6 +1,6 @@
 # CEDRINHO - Simple Port Manager
 
-Version: 1.0
+Version: 1.1
 
 A simple Python library for managing TCP ports and handling client-server communications. This project provides an abstraction for simplified port handling and communication, developed as part of a project at Instituto Politécnico de Bragança.
 
@@ -30,7 +30,7 @@ Yan Jardim Leal
 Install the package using pip:
 
 ```bash
-pip install port-manager==0.1.0
+pip install port-manager
 ```
 
 Or install from source:

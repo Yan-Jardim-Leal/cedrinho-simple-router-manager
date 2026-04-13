@@ -3,8 +3,8 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "yan_simple_port_manager"
-version = "0.1.0"
+name = "port_manager"
+version = "0.1.2"
 authors = [
   { name="Yan Jardim Leal", email="yan2005leal@gmail.com" },
 ]

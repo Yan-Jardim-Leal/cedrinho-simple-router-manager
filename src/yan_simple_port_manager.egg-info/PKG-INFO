@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
-Name: port_manager
-Version: 0.1.2
+Name: yan_simple_port_manager
+Version: 0.1.0
 Summary: Um gerenciador de portas simples
 Author-email: Yan Jardim Leal <yan2005leal@gmail.com>
 License-Expression: MIT
@@ -13,7 +13,7 @@ Dynamic: license-file
 
 # CEDRINHO - Simple Port Manager
 
-Version: 1.1
+Version: 1.0
 
 A simple Python library for managing TCP ports and handling client-server communications. This project provides an abstraction for simplified port handling and communication, developed as part of a project at Instituto Politécnico de Bragança.
 
@@ -43,7 +43,7 @@ Yan Jardim Leal
 Install the package using pip:
 
 ```bash
-pip install port-manager
+pip install port-manager==0.1.0
 ```
 
 Or install from source:
