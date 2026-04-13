@@ -52,15 +52,6 @@ class PortManager:
                 break
 
     def __handle_client(self, client_socket: Socket.socket, address: Tuple[str, int], function: Callable[[str, Tuple[str, int]], Any]) -> None:
-        """
-        Lida com o recebimento de dados de um cliente específico em uma thread isolada.
-
-        Args:
-            client_socket (Socket.socket): O objeto de socket do cliente conectado.
-            address (Tuple[str, int]): Tupla contendo IP e porta do cliente.
-            function (Callable): Função acionada ao receber dados. Deve aceitar a string 
-                decodificada e a tupla de endereço como parâmetros.
-        """
         with client_socket:
             while self.__running:
                 try:
@@ -68,9 +59,20 @@ class PortManager:
                     if not data:
                         break
                     
-                    # Chama a função de callback passando os dados e o endereço
-                    function(data.decode('utf-8'), address)
-                except Exception:
+                    response = function(data.decode('utf-8'), address)
+                    if response is None:
+                        continue
+                    if isinstance(response, bytes):
+                        safe_data = response
+                    elif isinstance(response, str):
+                        safe_data = response.encode('utf-8')
+                    else:
+                        safe_data = json.dumps(response).encode('utf-8')
+
+                    client_socket.sendall(safe_data)
+
+                except Exception as e:
+                    print(f"Erro na conexão com {address}: {e}")
                     break
         
         if client_socket in self.__connections:

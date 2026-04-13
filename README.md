@@ -1,6 +1,6 @@
 # CEDRINHO - Simple Port Manager
 
-Version: 1.1
+Version: 0.2.2
 
 A simple Python library for managing TCP ports and handling client-server communications. This project provides an abstraction for simplified port handling and communication, developed as part of a project at Instituto Politécnico de Bragança.
 
@@ -51,6 +51,7 @@ from port_manager import PortManager
 def handle_data(data, address):
     print(f"Received from {address}: {data}")
     # Process the data here
+    return "Fine!" #Returns the message to the client
 
 # Create a PortManager instance
 manager = PortManager('localhost', 12345)
